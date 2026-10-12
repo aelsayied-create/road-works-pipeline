@@ -1,0 +1,32 @@
+# One command runs the full stack:  docker compose up --build
+#   db   : PostgreSQL 16 + PostGIS
+#   api  : runs the pipeline, loads PostGIS, serves the REST API on :8000
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: roadworks
+      POSTGRES_PASSWORD: roadworks
+      POSTGRES_DB: roadworks
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U roadworks -d roadworks"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://roadworks:roadworks@db:5432/roadworks
+    depends_on:
+      db:
+        condition: service_healthy
+    command: >
+      sh -c "python -m roadworks.load_postgis &&
+             uvicorn api.main:app --host 0.0.0.0 --port 8000"
+    ports: ["8000:8000"]
+
+volumes:
+  pgdata:

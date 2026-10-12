@@ -1,0 +1,54 @@
+{
+  "as_of": "2026-10-01",
+  "by_class": {
+    "Available": 130,
+    "Utilized": 125,
+    "Cancelled": 21,
+    "Wasted": 13
+  },
+  "by_status": {
+    "Active": 146,
+    "Coordinated": 75,
+    "Cancelled": 40,
+    "Initially Closed": 28
+  },
+  "by_contractor": {
+    "Contractor A": {
+      "Active": 29,
+      "Cancelled": 10,
+      "Coordinated": 12,
+      "Initially Closed": 2
+    },
+    "Contractor B": {
+      "Active": 33,
+      "Cancelled": 5,
+      "Coordinated": 15,
+      "Initially Closed": 6
+    },
+    "Contractor C": {
+      "Active": 28,
+      "Cancelled": 11,
+      "Coordinated": 17,
+      "Initially Closed": 7
+    },
+    "Contractor D": {
+      "Active": 26,
+      "Cancelled": 7,
+      "Coordinated": 12,
+      "Initially Closed": 6
+    },
+    "Contractor E": {
+      "Active": 30,
+      "Cancelled": 7,
+      "Coordinated": 19,
+      "Initially Closed": 7
+    }
+  },
+  "by_sector": {
+    "East": 63,
+    "Central": 63,
+    "South": 59,
+    "North": 53,
+    "West": 51
+  }
+}
